@@ -13,7 +13,7 @@
         with your friends Jake, Tricky & Fresh whilst attempting to escape from
         the Inspector and his fast paced dog… Read more
       </p>
-      <router-link class="game__info__cta" to="/details/1">
+      <router-link class="game__info__cta" to="/details/asphalt_9:_legends-1">
         MORE INFO
       </router-link>
     </div>

@@ -2,7 +2,7 @@
   <header class="header">
     <div class="container">
       <router-link to="/" class="header__left" aria-level="Logo Icon">
-        <img src="@/assets/Logo_4.png" alt="Logo" />
+        <img src="@/assets/Logo_5.png" alt="Logo" />
       </router-link>
 
       <div class="header__right">

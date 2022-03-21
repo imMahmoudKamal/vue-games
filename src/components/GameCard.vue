@@ -1,19 +1,30 @@
 <template>
   <div class="card">
     <div class="card__img">
-      <img :src="game.img_url" :alt="props.game.title" />
-      <span class="card__img__rating">
-        <svg width="10" height="9.5" viewBox="0 0 10 9.5">
-          <path
-            d="M5,7.635,8.09,9.5,7.27,5.985,10,3.62l-3.595-.3L5,0,3.6,3.315,0,3.62,2.73,5.985,1.91,9.5Z"
-          />
-        </svg>
-        {{ props.game.rating.toFixed(1) }}
-      </span>
+      <router-link
+        :to="{
+          path: `/details/${formatUrl(props.game.title)}-${props.game.id}`,
+        }"
+      >
+        <img :src="game.img_url" :alt="props.game.title" />
+        <span class="card__img__rating">
+          <svg width="10" height="9.5" viewBox="0 0 10 9.5">
+            <path
+              d="M5,7.635,8.09,9.5,7.27,5.985,10,3.62l-3.595-.3L5,0,3.6,3.315,0,3.62,2.73,5.985,1.91,9.5Z"
+            />
+          </svg>
+          {{ props.game.rating.toFixed(1) }}
+        </span>
+      </router-link>
     </div>
 
     <h3 class="card__title">{{ props.game.title }}</h3>
-    <router-link class="card__cta" :to="{ path: `/details/${props.game.id}` }">
+    <router-link
+      class="card__cta"
+      :to="{
+        path: `/details/${formatUrl(props.game.title)}-${props.game.id}`,
+      }"
+    >
       {{ props.os ? 'Get Now' : 'MORE INFO' }}
     </router-link>
     <span class="card__os" v-if="props.os">For Android only</span>
@@ -26,6 +37,10 @@ const props = defineProps({
   game: { type: Object },
   id: { type: Number },
 });
+
+function formatUrl(url) {
+  return url.toLowerCase().split(' ').join('_');
+}
 </script>
 
 <style lang="scss" scoped>
@@ -41,12 +56,16 @@ const props = defineProps({
     position: relative;
     padding-top: 100%;
 
+    a {
+      display: block;
+      position: absolute;
+      inset: 0;
+    }
+
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      position: absolute;
-      inset: 0;
     }
 
     &__rating {
