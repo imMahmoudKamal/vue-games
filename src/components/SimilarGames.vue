@@ -41,14 +41,14 @@ const { data, isLoading } = useFetch(link);
   &__top {
     display: flex;
     justify-content: space-between;
-    font-weight: bold;
+    font-weight: 500;
     font-size: 0.85rem;
     margin-bottom: 1rem;
 
     &__heading {
       color: var(--clr-neutral-800);
       font-size: 0.85rem;
-      font-weight: bold;
+      font-weight: 500;
     }
 
     &__btn {

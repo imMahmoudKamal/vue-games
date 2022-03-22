@@ -80,7 +80,7 @@ function formatUrl(url) {
       border-radius: 0.3rem;
       fill: var(--clr-primary);
       color: var(--clr-neutral-800);
-      font-weight: bold;
+      font-weight: 700;
     }
   }
 

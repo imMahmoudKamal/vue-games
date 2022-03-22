@@ -142,15 +142,6 @@ export default {
     &__search {
       position: relative;
 
-      &::after {
-        content: '';
-        position: absolute;
-        inset: 2px 2px 2px auto;
-        width: calc(10rem - 4px);
-        border-radius: 0.2rem;
-        background: linear-gradient(90deg, rgb(255 255 255 / 50%), transparent);
-      }
-
       .open-input {
         transform: translateX(10rem);
         z-index: 1;
@@ -175,9 +166,8 @@ export default {
 
       &__input {
         font-size: 0.7rem;
-        font-weight: bold;
+        font-weight: 700;
         padding-left: 1.5rem;
-        text-transform: uppercase;
         height: 1.5rem;
         transform: scaleX(0);
         width: 10rem;

@@ -1,27 +1,63 @@
 <template>
   <nav class="nav">
     <ul class="nav__list">
-      <li class="nav__item">Arcade</li>
-      <li class="nav__item">Action</li>
-      <li class="nav__item">Advanture</li>
-      <li class="nav__item nav__item--active">Sports</li>
-      <li class="nav__item">Arcade</li>
-      <li class="nav__item">Action</li>
-      <li class="nav__item">Advanture</li>
-      <li class="nav__item">Arcade</li>
-      <li class="nav__item">Action</li>
-      <li class="nav__item">Advanture</li>
-      <li class="nav__item">Arcade</li>
-      <li class="nav__item">Action</li>
-      <li class="nav__item">Advanture</li>
-      <li class="nav__item">Arcade</li>
-      <li class="nav__item">Action</li>
-      <li class="nav__item">Advanture</li>
+      <li
+        v-for="(category, index) in gamesCategories"
+        :key="index"
+        class="nav__item"
+        :class="{ 'nav__item--active': index === activeCategory }"
+        @click="selectActiveCategory(index)"
+      >
+        {{ category }}
+      </li>
     </ul>
   </nav>
 </template>
 
-<script></script>
+<script setup>
+import { ref } from '@vue/reactivity';
+
+const emit = defineEmits(['selectCategory']);
+
+const gamesCategories = [
+  'All',
+  'Racing',
+  'Action',
+  'Adventure',
+  'Arcade',
+  'Sports',
+  'Puzzle',
+  'All',
+  'Racing',
+  'Action',
+  'Adventure',
+  'Arcade',
+  'Sports',
+  'Puzzle',
+  'All',
+  'Racing',
+  'Action',
+  'Adventure',
+  'Arcade',
+  'Sports',
+  'Puzzle',
+  'All',
+  'Racing',
+  'Action',
+  'Adventure',
+  'Arcade',
+  'Sports',
+  'Puzzle',
+];
+
+const activeCategory = ref(0);
+
+function selectActiveCategory(index) {
+  activeCategory.value = index;
+
+  emit('selectCategory', gamesCategories[index]);
+}
+</script>
 
 <style lang="scss" scoped>
 .nav {
@@ -52,7 +88,7 @@
     border: 1px solid #d2d2d2;
     border-radius: 0.6rem;
     font-size: 0.7rem;
-    font-weight: bold;
+    font-weight: 500;
     color: var(--clr-neutral-600);
     cursor: pointer;
 

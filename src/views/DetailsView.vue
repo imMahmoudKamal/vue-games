@@ -18,7 +18,7 @@ import ArticleComp from '../components/ArticleComp.vue';
 // fetch data
 const game = ref(null);
 const loading = ref(null);
-const { data, isLoading } = useFetch(`games/${formatUrl() - 1}`);
+const { data, isLoading } = useFetch(`games/${formatUrl()}`);
 game.value = data;
 loading.value = isLoading;
 
@@ -26,7 +26,7 @@ watch(
   () => props.id,
   (currentValue, newValue) => {
     if (currentValue !== newValue) {
-      const { data, isLoading } = useFetch(`games/${formatUrl() - 1}`);
+      const { data, isLoading } = useFetch(`games/${formatUrl()}`);
       game.value = data;
       loading.value = isLoading;
     }

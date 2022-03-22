@@ -1,27 +1,48 @@
 <template>
-  <section class="game">
+  <FeaturedGameSeleton v-if="isLoading" />
+
+  <section class="game" v-else>
     <div class="game__img">
-      <img src="@/assets/games/subway.png" alt="game" />
+      <img
+        :src="filterData(data).cover_img_url"
+        :alt="filterData(data).title"
+      />
     </div>
 
     <div class="game__info">
-      <h1 class="game__info__title">Subway Surfers</h1>
-      <span class="game__info__comp">SYBO Games</span>
-      <p class="game__info__desc">
-        SURF the urban wave! DODGE the oncoming trains! GRIND trains with your
-        cool… crew of friends! Run as far as you can on the endless train tracks
-        with your friends Jake, Tricky & Fresh whilst attempting to escape from
-        the Inspector and his fast paced dog… Read more
-      </p>
-      <router-link class="game__info__cta" to="/details/asphalt_9:_legends-1">
+      <h1 class="game__info__title">{{ filterData(data).title }}</h1>
+      <span class="game__info__comp">{{ filterData(data).developer }}</span>
+      <p class="game__info__desc" v-html="filterData(data).description"></p>
+      <router-link
+        class="game__info__cta"
+        :to="{
+          path: `/details/${formatUrl(filterData(data).title)}-${
+            filterData(data).id
+          }`,
+        }"
+      >
         MORE INFO
       </router-link>
     </div>
   </section>
 </template>
 
-<script>
-export default {};
+<script setup>
+const props = defineProps({
+  category: { type: String },
+});
+
+import FeaturedGameSeleton from './FeaturedGameSkeleton.vue';
+import { useFetch } from '../composables/useFetch';
+const { data, isLoading } = useFetch('games');
+
+function filterData(data) {
+  return data.filter((game) => game.category === props.category)[0] || data[0];
+}
+
+function formatUrl(url) {
+  return url.toLowerCase().split(' ').join('_');
+}
 </script>
 
 <style lang="scss" scoped>
@@ -54,7 +75,7 @@ export default {};
     &__title {
       font-size: 0.95rem;
       color: var(--clr-neutral-800);
-      font-weight: bold;
+      font-weight: 700;
       text-transform: capitalize;
     }
 

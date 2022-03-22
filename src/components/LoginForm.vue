@@ -114,7 +114,7 @@ export default {
   }
 
   &__title {
-    font-weight: bold;
+    font-weight: 700;
     font-size: 0.7rem;
     color: var(--clr-neutral-600);
     opacity: 80%;
@@ -173,7 +173,7 @@ export default {
   &__forget-password {
     width: fit-content;
     font-size: 0.7rem;
-    font-weight: bold;
+    font-weight: 500;
     align-self: flex-end;
     color: var(--clr-primary);
   }
@@ -182,7 +182,7 @@ export default {
     background-color: var(--clr-primary);
     color: #fff;
     font-size: 0.7rem;
-    font-weight: bold;
+    font-weight: 500;
     line-height: 1;
     padding: 0.4rem 0;
     border-radius: 0.25rem;
@@ -194,7 +194,7 @@ export default {
     text-align: center;
 
     &__cta {
-      font-weight: bold;
+      font-weight: 500;
       color: var(--clr-primary);
     }
   }
